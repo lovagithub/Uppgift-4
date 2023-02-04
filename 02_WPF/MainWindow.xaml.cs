@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -55,7 +56,9 @@ namespace _02_WPF
             {
                 FirstName = tb_FirstName.Text,
                 LastName = tb_LastName.Text,
-                Email = tb_Email.Text
+                Email = tb_Email.Text,
+                Phone = tb_Phone.Text,  
+                Address = tb_Address.Text  
             });
 
             file.Save(JsonConvert.SerializeObject(employees));
@@ -67,6 +70,9 @@ namespace _02_WPF
             tb_FirstName.Text = "";
             tb_LastName.Text = "";
             tb_Email.Text = "";
+            tb_Phone.Text = "";
+            tb_Address.Text = "";
         }
+       
     }
 }

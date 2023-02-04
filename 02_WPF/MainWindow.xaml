@@ -7,22 +7,28 @@
         xmlns:local="clr-namespace:_02_WPF"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="MainWindow" Height="450" Width="800">
-    
+        Title="Adressbok" Height="450" Width="800">
+    <!--- I min uppgift jag har använd kod från Lection 5 av min lärare Hans Mattin-Lassei-->
+    <!-- FÖNSTER DELAS I TRE KOLUMN-->
     <Grid Margin="20">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+           
         </Grid.ColumnDefinitions>
 
         <!-- FORM -->
+      
         <Grid Grid.Column="0" Margin="0 0 30 0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="*" />
+              <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
 
             <StackPanel Grid.Row="0">
+              <TextBlock Text="Välkommen till Adressboken " />
                 <TextBlock Text="Förnamn" />
                 <TextBox Name="tb_FirstName" Padding="3" Margin="0 0 0 10" />
 
@@ -31,23 +37,51 @@
 
                 <TextBlock Text="E-postadress" />
                 <TextBox Name="tb_Email" Padding="3" Margin="0 0 0 10" />
+
+                <TextBlock Text="Phone" />
+                <TextBox Name="tb_Phone" Padding="3" Margin="0 0 0 10" />
+
+                <TextBlock Text="Address" />
+                <TextBox Name="tb_Address" Padding="3" Margin="0 0 0 10" />
+              <Grid Grid.Column="0" >
+                <TextBlock Text="Välj ett av alternativen: " />
+              </Grid>
+
             </StackPanel>
 
-            <Button x:Name="btn_Add" Click="Btn_Add_Click" Grid.Row="1" VerticalAlignment="Bottom" Content="LÄGG TILL" Padding="5" />
+         
 
-        </Grid>
-        
-        <!-- LIST OF EMPLOYEES -->
-        <ListView x:Name="lv_Employees" Grid.Column="1" Margin="30 0 0 0">
-            <ListView.ItemTemplate>
+          <Button x:Name="btn_Add" Click="Btn_Add_Click" Grid.Row="1" VerticalAlignment="Bottom" Content="Skapa kontakt" Padding="5" />
+            <Button x:Name="btn_Del" Click="btn_Del_Click" Grid.Row="1" VerticalAlignment="Center" Content="Ta bort kontakt" Padding="5" />
+            <Button x:Name="btn_Spec" Click="Btn__Click" Grid.Row="1" VerticalAlignment="Top" Content="Visa specefik kontakt" Padding="5" />
+      
+      </Grid>
+      
+      <Grid Grid.Column="1" >
+        <TextBlock Text="Här är lista med alla kontakter " />
+      </Grid>
+
+
+
+      <!-- LIST OF EMPLOYEES -->
+     
+        <ListView x:Name="lv_Employees" Grid.Column="1" Margin="0 30 0 0">
+         
+          <ListView.ItemTemplate>
+          
                 <DataTemplate DataType="models:Employee">
                     <StackPanel Margin="0 5 0 5">
-                        <TextBlock FontWeight="Bold" Text="{Binding DisplayName}" />
+                     
+                        <TextBlock FontWeight="Bold" Text="{Binding DisplayName}" />                   
                         <TextBlock Text="{Binding Email}" />
+                        <TextBlock Text="{Binding Phone}" />
+                        <TextBlock Text="{Binding Address}" />
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        
-    </Grid>
+      
+     
+
+  </Grid>
 </Window>
